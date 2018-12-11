@@ -1,6 +1,7 @@
 # davWKwebView
-WKWebView与JS交互
-
+WKWebView与JS交互  
+ 
++（WKWebView第一种方法）
 ### JS调用OC
 
 ```objc
@@ -46,3 +47,5 @@ WKWebView与JS交互
 
 
 ```
+
++ WKWebViewJavascriptBridge  （第二种方法）
