@@ -2,6 +2,7 @@
 WKWebView与JS交互  
  
 +（WKWebView第一种方法）
+
 ### JS调用OC
 
 ```objc
@@ -49,3 +50,18 @@ WKWebView与JS交互
 ```
 
 + WKWebViewJavascriptBridge  （第二种方法）
+
+```objc
+//oc调用js代码
+[_webViewBridge registerHandler:@"ocDiaowo" handler:^(id data, WVJBResponseCallback responseCallback) {
+        // 获取位置信息
+        
+        NSString *location = @"广东省深圳市南山区学府路XXXX号";
+        // 将结果返回给js
+        responseCallback(location);
+    }];
+
+
+
+```
+
