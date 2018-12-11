@@ -1,7 +1,7 @@
 # davWKwebView
 WKWebView与JS交互  
  
-+（WKWebView第一种方法）
++ WKWebView第一种方法
 
 ### JS调用OC
 
@@ -52,13 +52,17 @@ WKWebView与JS交互
 + WKWebViewJavascriptBridge  （第二种方法）
 
 ```objc
-//oc调用js代码
-[_webViewBridge registerHandler:@"ocDiaowo" handler:^(id data, WVJBResponseCallback responseCallback) {
-        // 获取位置信息
-        
-        NSString *location = @"广东省深圳市南山区学府路XXXX号";
-        // 将结果返回给js
-        responseCallback(location);
+// js调我
+    [self.webViewBridge registerHandler:@"jsDiaoOc" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"js call getUserIdFromObjC, data from js is %@", data);
+        if (responseCallback) {
+            // 反馈给JS
+            responseCallback(@{@"userId": @"1345980"});
+        }
+    }];
+    //调用js方法
+    [self.webViewBridge callHandler:@"ocDiaoWo" data:@{@"B":@"刘德华"} responseCallback:^(id responseData) {
+        NSLog(@"js给我的数据: %@", responseData);
     }];
 
 
